@@ -32,7 +32,7 @@ Clone the repo (using that link : https://github.com/ReemHesham1/validateNumbers
 
 git clone https://github.com/ReemHesham1/validateNumbers.git
 
-You can run the project by cloning the project and using suitable ide for the backend (ex:intelj) and for the front end (ex:vsCode)
+You can run the project by cloning the project and using suitable ide for the backend (ex:intelj) (will run on port8085) and for the front end (ex:vsCode)(will run on port 8080) 
 or by any of the methods listed:
 
 JAR FILE:
