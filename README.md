@@ -13,16 +13,16 @@ Using Strategy Pattern (to take decision based on it filtration works) to make t
 # Technologies Used
 
 Frontend:
-VueJs.
-Vuetify.
+VueJs,
+Vuetify,
 Axios.
 
 Backend:
-Java (11).
-Spring boot.
-Spring Data JPA.
-SQLite.
-Lombok.
-Swagger (Springdoc-openapi).
+Java (11),
+Spring boot,
+Spring Data JPA,
+SQLite,
+Lombok,
+Swagger (Springdoc-openapi),
 H2 Database.
 
