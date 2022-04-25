@@ -1,4 +1,4 @@
-# validateNumbers
+# ValidateNumbers
 
 # Project Discription
 Lists and categorize country phone numbers, it also offers possibility to filter phone numbers by country and their state whether they are valid or not.
