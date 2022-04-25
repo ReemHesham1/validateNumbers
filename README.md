@@ -47,7 +47,7 @@ Or you can run the following command instead if you want to put the package in y
 
 Run the following command
 
-`java -jar target/name-app.jar`
+`java -jar target/validateNumber-app.jar`
 
 The app is now running and you can access it through the following url
 
@@ -69,11 +69,11 @@ Or you can run the following command instead if you want to put the package in y
 
 inn the project's root directory run the following command
 
-`docker build -t name-app .`
+`docker build -t validateNumber-app .`
 
 in the Project's root folder run the following command
 
-`docker run --rm -it -p 8085:8085 name-app`
+`docker run --rm -it -p 8085:8085 validateNumber-app`
 
 in all the cases :
 The app will be running and you can access it through
