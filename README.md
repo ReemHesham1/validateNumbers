@@ -29,34 +29,51 @@ H2 Database.
 # To Run the project:
 
 Clone the repo (using that link : https://github.com/ReemHesham1/validateNumbers.git)
+
 git clone https://github.com/ReemHesham1/validateNumbers.git
 
 You can run the project by cloning the project and using suitable ide for the backend (ex:intelj) and for the front end (ex:vsCode)
 or by any of the methods listed:
 
-JAR FILE
+JAR FILE:
+
 In the project's root directory run
-mvn clean package
+
+`mvn clean package`
+
 Or you can run the following command instead if you want to put the package in your local repo
-mvn clean install
+
+`mvn clean install`
+
 Run the following command
-java -jar target/name-app.jar
+
+`java -jar target/name-app.jar`
 
 The app is now running and you can access it through the following url
+
 http://localhost:8085/
+
 You can access swagger api documentation on the following URL
+
 http://localhost:8085/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
 
-USING DOCKER
+USING DOCKER:
+
 In the project's root directory run
-mvn clean package
+
+`mvn clean package`
+
 Or you can run the following command instead if you want to put the package in your local repo
-mvn clean install
-Still on the project's root directory run the following command
-docker build -t name-app .
+
+`mvn clean install`
+
+inn the project's root directory run the following command
+
+`docker build -t name-app .`
 
 in the Project's root folder run the following command
-docker run --rm -it -p 8085:8085 name-app
+
+`docker run --rm -it -p 8085:8085 name-app`
 
 in all the cases :
 The app will be running and you can access it through
