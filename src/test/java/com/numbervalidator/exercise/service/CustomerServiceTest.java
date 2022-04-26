@@ -64,11 +64,12 @@ public class CustomerServiceTest {
                     customerService.getCustomersNumbers("Morocco", "valid number", 0, 10);;
                 });
     }
-// ????????
+
+
     @Test
     public void testCountryAndStateCustomersDetailsWithPaginationInfoWithInvalidCountryThenSuccess() throws NoCustomersFoundException, InvalidCountryNameException {
 
-        Mockito.when(countryFetcher.getCodeFromCountry("WrongCountryName")).thenThrow();
+        Mockito.when(countryFetcher.getCodeFromCountry("WrongCountryName")).thenThrow(InvalidCountryNameException.class);
 
         assertThrows(InvalidCountryNameException.class,
                 () -> {

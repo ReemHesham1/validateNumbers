@@ -74,7 +74,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>jumia-validator-app</finalName>
+		<finalName>validateNumber-app</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

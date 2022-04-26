@@ -36,7 +36,7 @@ public class CountriesControllerTest {
 
 	  @Test
 	  public void testGetListOfContriesThenSuccess() throws Exception {
-	    mockMvc.perform(get("/countries"))
+	    mockMvc.perform(get("/countries/names"))
 	        .andExpect(status().isOk())
 	        .andExpect(jsonPath("$", hasSize(5)));
 	  }
