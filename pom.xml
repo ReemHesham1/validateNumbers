@@ -74,7 +74,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>validateNumber-app</finalName>
+		<finalName>validate-number-app</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
