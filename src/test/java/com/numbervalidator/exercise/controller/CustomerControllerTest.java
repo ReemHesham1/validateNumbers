@@ -55,15 +55,16 @@ public class CustomerControllerTest {
         final String state = "All";
         final int page = 0;
         final int size = 10;
-        Customer customer = new Customer(1l,"Customer Name","(212) 578945632","(212)","Morocco",true);
-        List <Customer> customerDto = new ArrayList<>();
+        Customer customer = new Customer(1l, "Customer Name", "(212) 578945632", "(212)", "Morocco", true);
+        List<Customer> customerDto = new ArrayList<>();
         customerDto.add(customer);
 
 
         Mockito.when(customerService.getCustomersNumbers(countryName, state, page, size)).thenReturn(new PageImpl<>(customerDto));
         mockMvc.perform(MockMvcRequestBuilders.get(BASE_URL + "?countryName=" + countryName + "&page=" + page + "&size=" + size)
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.content[0].countryName").value("Morocco"));
     }
 
     @Test
@@ -72,26 +73,44 @@ public class CustomerControllerTest {
         final String state = "valid number";
         final int page = 0;
         final int size = 10;
-        Customer customer = new Customer(1l,"Customer Name","(212) 578945632","(212)","Morocco",true);
-        List <Customer> customerDto = new ArrayList<>();
+        Customer customer = new Customer(1l, "Customer Name", "(212) 578945632", "(212)", "Morocco", true);
+        List<Customer> customerDto = new ArrayList<>();
         customerDto.add(customer);
 
 
         Mockito.when(customerService.getCustomersNumbers(countryName, state, page, size)).thenReturn(new PageImpl<>(customerDto));
         mockMvc.perform(MockMvcRequestBuilders.get(BASE_URL + "?state=" + state + "&page=" + page + "&size=" + size)
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.content[0].valid").value("true"));
     }
 
+    @Test
+    public void testGetStateCustomersDetailsWithPaginationInfoAndNotValidNumberThenSuccess() throws Exception {
+        final String countryName = "All";
+        final String state = "invalid number";
+        final int page = 0;
+        final int size = 10;
+        Customer customer = new Customer(1l, "Customer Name", "(212) 5745632", "(212)", "Morocco", false);
+        List<Customer> customerDto = new ArrayList<>();
+        customerDto.add(customer);
+
+
+        Mockito.when(customerService.getCustomersNumbers(countryName, state, page, size)).thenReturn(new PageImpl<>(customerDto));
+        mockMvc.perform(MockMvcRequestBuilders.get(BASE_URL + "?state=" + state + "&page=" + page + "&size=" + size)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.content[0].valid").value("false"));
+    }
     @Test
     public void testGetAllCountryStateCustomersDetailsWithPaginationInfoThenSuccess() throws Exception {
         final String countryName = "All";
         final String state = "All";
         final int page = 0;
         final int size = 10;
-        Customer customer = new Customer(1l,"Customer Name","(212) 578945632","(212)","Morocco",true);
-        Customer secCustomer = new Customer(1l,"Customer Name","(212) 578925632","(212)","Morocco",true);
-        List <Customer> customerDto = new ArrayList<>();
+        Customer customer = new Customer(1l, "Customer Name", "(212) 578945632", "(212)", "Morocco", true);
+        Customer secCustomer = new Customer(1l, "Customer Name", "(212) 578925632", "(212)", "Morocco", true);
+        List<Customer> customerDto = new ArrayList<>();
         customerDto.add(customer);
         customerDto.add(secCustomer);
 
@@ -99,7 +118,9 @@ public class CustomerControllerTest {
         Mockito.when(customerService.getCustomersNumbers(countryName, state, page, size)).thenReturn(new PageImpl<>(customerDto));
         mockMvc.perform(MockMvcRequestBuilders.get(BASE_URL + "?countryName=" + countryName + "&state=" + state + "&page=" + page + "&size=" + size)
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.content[0].countryName").value("Morocco"))
+                .andExpect(jsonPath("$.content[0].valid").value("true"));
     }
 
     @Test
@@ -108,9 +129,9 @@ public class CustomerControllerTest {
         final String state = "All";
         final int page = 0;
         final int size = 5;
-        Customer customer = new Customer(1l,"Customer Name","(212) 578945632","(212)","Morocco",true);
-        Customer secCustomer = new Customer(1l,"Customer Name","(212) 578925632","(212)","Morocco",true);
-        List <Customer> customerDto = new ArrayList<>();
+        Customer customer = new Customer(1l, "Customer Name", "(212) 578945632", "(212)", "Morocco", true);
+        Customer secCustomer = new Customer(1l, "Customer Name", "(212) 578925632", "(212)", "Morocco", true);
+        List<Customer> customerDto = new ArrayList<>();
         customerDto.add(customer);
         customerDto.add(secCustomer);
 
@@ -118,7 +139,9 @@ public class CustomerControllerTest {
         Mockito.when(customerService.getCustomersNumbers(countryName, state, page, size)).thenReturn(new PageImpl<>(customerDto));
         mockMvc.perform(MockMvcRequestBuilders.get(BASE_URL + "?countryName=" + countryName + "&state=" + state)
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.content[0].countryName").value("Morocco"))
+                .andExpect(jsonPath("$.content[0].valid").value("true"));
     }
 
 }
